@@ -1,9 +1,19 @@
 <?php
 require_once '../../admin/dbcon/conn.php';
 
+// Pagination
+$records_per_page = 10;
+$page = isset($_GET['page']) ? $_GET['page'] : 1;
+$offset = ($page - 1) * $records_per_page;
 
-$query = "SELECT * FROM orderpos";
+// Count total records
+$total_records_query = "SELECT COUNT(*) as total FROM orderpos";
+$total_result = mysqli_query($conn, $total_records_query);
+$total_records = mysqli_fetch_assoc($total_result)['total'];
+$total_pages = ceil($total_records / $records_per_page);
 
+// Query with pagination
+$query = "SELECT * FROM orderpos LIMIT $offset, $records_per_page";
 $result = mysqli_query($conn, $query);
 ?>
  <style>
@@ -36,6 +46,15 @@ $result = mysqli_query($conn, $query);
     }
     .right{
         margin-right:7px;
+    }
+    .pagination-container {
+        display: flex;
+        justify-content: flex-end; /* Align to the right */
+        margin-top: 10px; /* Optional: Add margin for better spacing */
+    }
+
+    .pagination {
+        margin-bottom: 0;
     }
 </style>
 <div class="tab-content" id="orders-table-tab-content">
@@ -77,6 +96,15 @@ $result = mysqli_query($conn, $query);
                         </tbody>
                     </table>
                 </div>
+                <nav aria-label="Page navigation" class="pagination-container mt-4 no-print">
+                    <ul class="pagination no-print">
+                        <?php
+                        for ($i = 1; $i <= $total_pages; $i++) {
+                            echo "<li class='page-item " . ($page == $i ? 'active' : '') . "'><a class='page-link' href='?page=$i'>$i</a></li>";
+                        }
+                        ?>
+                    </ul>
+                </nav>
                 <button onclick="printTable()" class="btn btn-secondary mt-2 mb-2 no-print">Print Table</button>
             </div>
         </div>
