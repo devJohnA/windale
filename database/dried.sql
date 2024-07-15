@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 12, 2024 at 12:53 PM
+-- Generation Time: Jul 15, 2024 at 07:54 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -126,23 +126,11 @@ CREATE TABLE `orderpos` (
 --
 
 INSERT INTO `orderpos` (`id`, `orNumber`, `productDetails`, `totalPrice`, `orderDate`) VALUES
-(2, '98102', 'Hey 1, sad 1', 46.00, '2024-07-08 07:24:37'),
-(3, '18661', 'Hey 1, sad 2', 69.00, '2024-07-08 07:28:00'),
-(4, '25911', 'Hey 2, sad 5', 161.00, '2024-07-08 07:28:58'),
-(5, '22653', 'Hey 2, sad 5', 161.00, '2024-07-08 07:36:25'),
-(6, '39781', 'Hey 1, sad 2', 69.00, '2024-07-08 07:42:37'),
-(8, '97973', 'Hey 1, sad 3', 92.00, '2024-07-08 07:54:19'),
-(9, '31472', 'sad 1, Hey 1', 46.00, '2024-07-09 08:03:33'),
-(10, '53957', 'Hey 2, sad 1', 69.00, '2024-07-09 08:04:49'),
-(11, '92658', 'Hey 1, Hey 5', 138.00, '2024-07-11 10:21:28'),
-(12, '58924', 'sad 1', 23.00, '2024-07-11 10:22:49'),
-(13, '64857', 'Hey 3, sad 2', 115.00, '2024-06-12 05:35:29'),
-(14, '54298', 'sad 1, Hey 1', 46.00, '2024-05-12 05:36:24'),
-(15, '83200', 'sad 5', 115.00, '2024-04-12 05:37:07'),
-(16, '47286', 'Hey 5, sad 5', 230.00, '2024-03-12 05:37:42'),
-(17, '64421', 'sad 10, Hey 15', 575.00, '2024-02-12 05:38:03'),
-(18, '93932', 'sad 16, Hey 18', 782.00, '2024-01-12 05:38:26'),
-(19, '11538', 'Hey 3, sad 4', 161.00, '2024-07-12 06:30:55');
+(20, '48897', 'Hammer SAM High Carbon Tool Steel Claw 1', 3515.00, '2024-07-15 16:41:08'),
+(21, '27962', 'Boysen Paint 1 Liter White Semi Gloss Latex B-715 1', 209.00, '2024-07-15 16:41:28'),
+(22, '73836', 'Hammer SAM High Carbon Tool Steel Claw 5, RS PRO  Carbon  Steel  Claw Hammer  with Fibreglass Handle 5', 33435.00, '2024-07-15 16:42:09'),
+(23, '80385', 'Hammer SAM High Carbon Tool Steel Claw 3, RS PRO  Carbon  Steel  Claw Hammer  with Fibreglass Handle 3, Boysen Paint 1 Liter White Semi Gloss Latex B-715 1, Pliers 1', 20590.00, '2024-07-15 16:43:22'),
+(24, '55171', 'Hammer SAM High Carbon Tool Steel Claw 1', 3515.00, '2024-07-15 17:52:11');
 
 -- --------------------------------------------------------
 
@@ -242,7 +230,7 @@ INSERT INTO `stocks` (`id`, `images`, `productName`, `productCategory`, `product
 (25, 'boysen.jpg', 'Boysen Paint 1 Liter White Semi Gloss Latex B-715', 'Paint', 209.00, 35, 25, '2024-07-12', ''),
 (26, 'Cemento.jpg', 'Cement', 'Ordinary Portland Cement', 205.00, 100, 50, '2024-07-12', ''),
 (27, 'pulgadira.jpg', 'Power Tape', 'Hand Held Tools', 150.00, 150, 50, '2024-07-12', ''),
-(28, 'pliers.jpg', 'Pliers', 'Hand Held Tools', 320.00, 150, 60, '2024-07-12', '');
+(28, 'pliers.jpg', 'Pliers', 'Hand Held Tools', 320.00, 149, 60, '2024-07-12', '');
 
 -- --------------------------------------------------------
 
@@ -408,25 +396,6 @@ CREATE TABLE `tblpromopro` (
   `PROBANNER` tinyint(4) NOT NULL,
   `PRONEW` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
---
--- Dumping data for table `tblpromopro`
---
-
-INSERT INTO `tblpromopro` (`PROMOID`, `PROID`, `PRODISCOUNT`, `PRODISPRICE`, `PROBANNER`, `PRONEW`) VALUES
-(47, 1046, 0, 23, 0, 0),
-(49, 1048, 0, 23, 0, 0),
-(50, 1049, 0, 23, 0, 0),
-(51, 1050, 0, 23, 0, 0),
-(75, 1079, 0, 23, 0, 0),
-(77, 1081, 0, 23, 0, 0),
-(80, 1084, 0, 23, 0, 0),
-(85, 1089, 0, 320, 0, 0),
-(86, 1090, 0, 150, 0, 0),
-(87, 1091, 0, 205, 0, 0),
-(88, 1092, 0, 209, 0, 0),
-(89, 1093, 0, 3515, 0, 0),
-(90, 1094, 0, 1200, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -679,7 +648,7 @@ ALTER TABLE `messageout`
 -- AUTO_INCREMENT for table `orderpos`
 --
 ALTER TABLE `orderpos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `pos`
