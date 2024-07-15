@@ -56,8 +56,6 @@ try {
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
 
-    $maxTotal = 0;
-
     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
         $total = $row['order_total'] + $row['summary_total'];
         $month_index = ($month === 'overall') ? $row['month'] - 1 : $month - 1;
@@ -67,22 +65,10 @@ try {
             "y" => $total,
             "color" => $colors[$month_index]
         ];
-
-        if ($total > $maxTotal) {
-            $maxTotal = $total;
-        }
     }
 
-    // Calculate the maximum y-axis value
-    $yAxisMax = ceil($maxTotal / 100000) * 100000;
-
-    $response = [
-        "dataPoints" => $dataPoints,
-        "yAxisMax" => $yAxisMax
-    ];
-
     header('Content-Type: application/json');
-    echo json_encode($response, JSON_NUMERIC_CHECK);
+    echo json_encode($dataPoints, JSON_NUMERIC_CHECK);
 
 } catch (Exception $e) {
     header('Content-Type: application/json');
