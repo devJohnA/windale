@@ -264,6 +264,15 @@ $dataPoints = array(
             </div>
         </div>
     </div>
+
+    <div class="col-12 col-lg-6">
+    <div class="app-card app-card-stat shadow-sm h-100">
+        <div class="app-card-body p-3 p-lg-4">
+            <h4 class="stats-type mb-3">Top Selling Products</h4>
+            <div id="productSalesChartContainer" style="height: 300px;"></div>
+        </div>
+    </div>
+</div>
 </div>
     <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
     
@@ -330,9 +339,63 @@ function updateDoughnutChart(stockData) {
     chart.render();
 }
 
+function fetchProductSalesData() {
+    fetch('get_product_sales.php')
+        .then(response => response.json())
+        .then(data => {
+            updateProductSalesChart(data);
+        })
+        .catch(error => console.error('Error fetching product sales data:', error));
+}
+
+function updateProductSalesChart(salesData) {
+    // Sort the data in descending order of sales
+    salesData.sort((a, b) => b.y - a.y);
+
+    // Create an array of distinct colors
+    var colors = [
+        "#fd2323", "#2196F3", "#FFC107", "#FF5722", "#9C27B0",
+        "#795548", "#3F51B5", "#009688", "#FF9800", "#607D8B"
+    ];
+
+    // Assign colors to dataPoints and limit to top 10 if more exist
+    var topSalesData = salesData.slice(0, 10).map((dataPoint, index) => ({
+        label: dataPoint.label,
+        y: dataPoint.y,
+        color: colors[index % colors.length]
+    }));
+
+    var chart = new CanvasJS.Chart("productSalesChartContainer", {
+        animationEnabled: true,
+        title: {
+            text: "Top Selling Products"
+        },
+        axisY: {
+            title: "Product Sold",
+            includeZero: true
+        },
+        axisX: {
+            interval: 1,
+            labelAngle: -45
+        },
+        dataPointWidth: 50,
+        data: [{
+            type: "column",
+            yValueFormatString: "#,##0",
+            indexLabel: "{y}",
+            indexLabelPlacement: "inside",
+            indexLabelFontWeight: "bolder",
+            indexLabelFontColor: "white",
+            dataPoints: topSalesData
+        }]
+    });
+    chart.render();
+}
+
 function initializeCharts() {
     updateChart();
     fetchStockData();
+    fetchProductSalesData();
 }
 
 window.onload = initializeCharts;
