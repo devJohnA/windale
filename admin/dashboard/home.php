@@ -291,7 +291,8 @@ function updateChart() {
                     title: "(PHP)",
                     includeZero: true,
                     prefix: "₱",
-                    suffix:  "k"
+                    suffix:  "k",
+                    maximum: data.yAxisMax // Use the calculated maximum here
                 },
                 data: [{
                     type: "bar",
@@ -301,7 +302,7 @@ function updateChart() {
                     indexLabelFontWeight: "bolder",
                     indexLabelFontColor: "white",
                     color: "#fd2323",
-                    dataPoints: data
+                    dataPoints: data.dataPoints // The data points are now nested
                 }]
             });
             chart.render();
