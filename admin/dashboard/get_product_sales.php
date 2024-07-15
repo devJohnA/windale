@@ -1,29 +1,37 @@
 <?php
 require_once '../../admin/dbcon/conn.php';
 
-$query = "SELECT 
-    SUBSTRING_INDEX(SUBSTRING_INDEX(productDetails, ', ', n.n), ' ', 1) as productName,
-    SUM(CAST(SUBSTRING_INDEX(SUBSTRING_INDEX(SUBSTRING_INDEX(productDetails, ', ', n.n), ' ', -1), ',', 1) AS UNSIGNED)) as totalSold
-FROM 
-    orderpos
-CROSS JOIN 
-    (SELECT 1 as n UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5) n
-WHERE 
-    n.n <= 1 + (LENGTH(productDetails) - LENGTH(REPLACE(productDetails, ',', '')))
-GROUP BY 
-    productName
-ORDER BY 
-    totalSold DESC
-LIMIT 10";
-
+$query = "SELECT productDetails FROM orderpos";
 $result = $conn->query($query);
 
-$data = array();
+$productCounts = array();
+
 while ($row = $result->fetch_assoc()) {
+    $products = explode(', ', $row['productDetails']);
+    foreach ($products as $product) {
+        preg_match('/^(.*?)\s+(\d+)$/', $product, $matches);
+        if (count($matches) == 3) {
+            $productName = trim($matches[1]);
+            $quantity = intval($matches[2]);
+            if (!isset($productCounts[$productName])) {
+                $productCounts[$productName] = 0;
+            }
+            $productCounts[$productName] += $quantity;
+        }
+    }
+}
+
+arsort($productCounts);
+
+$data = array();
+$count = 0;
+foreach ($productCounts as $productName => $totalSold) {
+    if ($count >= 10) break;
     $data[] = array(
-        "label" => $row['productName'],
-        "y" => intval($row['totalSold'])
+        "label" => $productName,
+        "y" => $totalSold
     );
+    $count++;
 }
 
 echo json_encode($data);

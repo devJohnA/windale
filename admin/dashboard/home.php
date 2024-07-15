@@ -349,49 +349,48 @@ function fetchProductSalesData() {
 }
 
 function updateProductSalesChart(salesData) {
-    // Sort the data in descending order of sales
-    salesData.sort((a, b) => b.y - a.y);
-
     // Create an array of distinct colors
     var colors = [
         "#fd2323", "#2196F3", "#FFC107", "#FF5722", "#9C27B0",
         "#795548", "#3F51B5", "#009688", "#FF9800", "#607D8B"
     ];
 
-    // Assign colors to dataPoints and limit to top 10 if more exist
-    var topSalesData = salesData.slice(0, 10).map((dataPoint, index) => ({
-        label: dataPoint.label,
-        y: dataPoint.y,
-        color: colors[index % colors.length]
-    }));
+    // Assign colors to dataPoints
+    salesData.forEach((dataPoint, index) => {
+        dataPoint.color = colors[index % colors.length];
+    });
 
     var chart = new CanvasJS.Chart("productSalesChartContainer", {
         animationEnabled: true,
         title: {
-            text: "Top Selling Products"
+            text: "Top 10 Selling Products"
         },
         axisY: {
-            title: "Product Sold",
+            title: "Products Sold",
             includeZero: true
         },
         axisX: {
             interval: 1,
-            labelAngle: -45
+            labelFormatter: function() {
+                return ""; // This removes the labels on the x-axis
+            }
         },
         dataPointWidth: 50,
+        toolTip: {
+            content: "{label}: {y} units" // This defines what's shown on hover
+        },
         data: [{
             type: "column",
-            yValueFormatString: "#,##0",
+            yValueFormatString: "#,##0 ",
             indexLabel: "{y}",
             indexLabelPlacement: "inside",
             indexLabelFontWeight: "bolder",
             indexLabelFontColor: "white",
-            dataPoints: topSalesData
+            dataPoints: salesData
         }]
     });
     chart.render();
 }
-
 function initializeCharts() {
     updateChart();
     fetchStockData();
