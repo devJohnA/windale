@@ -366,7 +366,7 @@ function updateProductSalesChart(salesData) {
             text: "Top 10 Selling Products"
         },
         axisY: {
-            title: "Products Sold",
+            title: "Product Sold",
             includeZero: true
         },
         axisX: {
@@ -377,7 +377,7 @@ function updateProductSalesChart(salesData) {
         },
         dataPointWidth: 50,
         toolTip: {
-            content: "{label}: {y} units" // This defines what's shown on hover
+            content: "{label}: {y} total" // This defines what's shown on hover
         },
         data: [{
             type: "column",
