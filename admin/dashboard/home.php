@@ -363,7 +363,7 @@ function updateProductSalesChart(salesData) {
     var chart = new CanvasJS.Chart("productSalesChartContainer", {
         animationEnabled: true,
         title: {
-            text: "Top 10 Selling Products"
+            text: "Top Selling Products"
         },
         axisY: {
             title: "Product Sold",
