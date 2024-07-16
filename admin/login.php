@@ -75,7 +75,7 @@ require_once("../include/initialize.php");
               }
               
               .login-dark form .btn-primary:hover, .login-dark form .btn-primary:active {
-                background: #214a80;
+                background: seagreen;
                 outline: none;
               }
               
