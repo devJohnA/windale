@@ -62,7 +62,7 @@
 
 <!-- <a href="index.php?view=add" class="btn btn-default">New</a> -->
 
-<button type="submit" class="btn btn-danger end" name="delete"><i class="fa fa-trash fw-fa"></i> Select</button>
+<button type="submit" class="btn btn-danger end" name="delete"><i class="fa fa-trash fw-fa"></i> Delete</button>
 
 </div>
 
