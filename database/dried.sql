@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 15, 2024 at 07:54 PM
+-- Generation Time: Jul 18, 2024 at 10:53 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -130,7 +130,8 @@ INSERT INTO `orderpos` (`id`, `orNumber`, `productDetails`, `totalPrice`, `order
 (21, '27962', 'Boysen Paint 1 Liter White Semi Gloss Latex B-715 1', 209.00, '2024-07-15 16:41:28'),
 (22, '73836', 'Hammer SAM High Carbon Tool Steel Claw 5, RS PRO  Carbon  Steel  Claw Hammer  with Fibreglass Handle 5', 33435.00, '2024-07-15 16:42:09'),
 (23, '80385', 'Hammer SAM High Carbon Tool Steel Claw 3, RS PRO  Carbon  Steel  Claw Hammer  with Fibreglass Handle 3, Boysen Paint 1 Liter White Semi Gloss Latex B-715 1, Pliers 1', 20590.00, '2024-07-15 16:43:22'),
-(24, '55171', 'Hammer SAM High Carbon Tool Steel Claw 1', 3515.00, '2024-07-15 17:52:11');
+(24, '55171', 'Hammer SAM High Carbon Tool Steel Claw 1', 3515.00, '2024-07-15 17:52:11'),
+(25, '33325', 'Hammer SAM High Carbon Tool Steel Claw 1', 3515.00, '2024-07-16 07:26:51');
 
 -- --------------------------------------------------------
 
@@ -298,7 +299,7 @@ CREATE TABLE `tblcustomer` (
   `PHONE` varchar(20) NOT NULL,
   `EMAILADD` varchar(40) NOT NULL,
   `ZIPCODE` int(6) NOT NULL,
-  `CUSUNAME` varchar(20) NOT NULL,
+  `CUSUNAME` varchar(250) NOT NULL,
   `CUSPASS` varchar(90) NOT NULL,
   `CUSPHOTO` varchar(255) NOT NULL,
   `TERMS` tinyint(4) NOT NULL,
@@ -310,8 +311,12 @@ CREATE TABLE `tblcustomer` (
 --
 
 INSERT INTO `tblcustomer` (`CUSTOMERID`, `FNAME`, `LNAME`, `MNAME`, `CUSHOMENUM`, `STREETADD`, `BRGYADD`, `CITYADD`, `PROVINCE`, `COUNTRY`, `DBIRTH`, `GENDER`, `PHONE`, `EMAILADD`, `ZIPCODE`, `CUSUNAME`, `CUSPASS`, `CUSPHOTO`, `TERMS`, `DATEJOIN`) VALUES
-(50, 'joshua', 'delacruz', '', '', '', '', 'Mancilang, Madridejos, Cebu', '', '', '0000-00-00', 'Male', '09692870485', '', 0, 'delacruzjohnanthon@g', 'f222e3e3a319a95ef21de806314fc6ffebeaa71a', '', 1, '2024-07-09 19:22:37'),
-(51, 'jonas', 'dabalos', '', '', '', '', 'Talangnan, Madridejos, Cebu', '', '', '0000-00-00', 'Male', '09128374653', '', 0, 'jonas@gmail.com', '4c2f2c5a6f07af51c6cf3737c2e46cf59f262380', '', 1, '2024-07-09 19:23:09');
+(51, 'jonas', 'dabalos', '', '', '', '', 'Talangnan, Madridejos, Cebu', '', '', '0000-00-00', 'Male', '09128374653', '', 0, 'jonas@gmail.com', '4c2f2c5a6f07af51c6cf3737c2e46cf59f262380', '', 1, '2024-07-09 19:23:09'),
+(52, 'Alfred', 'Dela Cruz', '', '', '', '', 'Mancilang, Madridejos, Cebu', '', '', '0000-00-00', 'Male', '09874573222', '', 0, 'alfred24@gmail.com', '00e7e0ce8d077c220dd1b723d81e572fa725a562', '', 1, '2024-07-18 01:37:51'),
+(53, 'Vince', 'Lauron', '', '', '', '', 'Malbago, Madridejos, Cebu', '', '', '0000-00-00', 'Male', '09192837485', '', 0, 'vince@gmail.com', 'd593bcc52c304849532d6627aeea2c255ca59365', '', 1, '2024-07-18 01:38:52'),
+(54, 'Ma. Mercy', 'Dela Cruz', '', '', '', '', 'Mancilang, Madridejos, Cebu', '', '', '0000-00-00', 'Male', '09996884424', '', 0, 'mariamercy@gmail.com', 'edcac06643020979563080b8345520a27e9fa3bc', '', 1, '2024-07-18 01:39:48'),
+(61, 'Test', 'Testing', '', '', '', '', 'Mancilang, Madridejos, Cebu', '', '', '0000-00-00', 'Male', '09283748222', '', 0, 'testing@gmail.com', '4c0d2b951ffabd6f9a10489dc40fc356ec1d26d5', '', 1, '2024-07-18 02:06:08'),
+(65, 'John Anthon', 'Dela Cruz', '', '', '', '', 'Mancilang, Madridejos, Cebu', '', '', '0000-00-00', 'Male', '09692870485', '', 0, 'delacruzjohnanthon@gmail.com', 'f222e3e3a319a95ef21de806314fc6ffebeaa71a', '', 1, '2024-07-18 02:51:55');
 
 -- --------------------------------------------------------
 
@@ -648,7 +653,7 @@ ALTER TABLE `messageout`
 -- AUTO_INCREMENT for table `orderpos`
 --
 ALTER TABLE `orderpos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `pos`
@@ -690,7 +695,7 @@ ALTER TABLE `tblcategory`
 -- AUTO_INCREMENT for table `tblcustomer`
 --
 ALTER TABLE `tblcustomer`
-  MODIFY `CUSTOMERID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `CUSTOMERID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT for table `tblorder`
