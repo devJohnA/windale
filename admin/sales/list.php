@@ -96,15 +96,7 @@ $result = mysqli_query($conn, $query);
                         </tbody>
                     </table>
                 </div>
-                <nav aria-label="Page navigation" class="pagination-container mt-4 no-print">
-                    <ul class="pagination no-print">
-                        <?php
-                        for ($i = 1; $i <= $total_pages; $i++) {
-                            echo "<li class='page-item " . ($page == $i ? 'active' : '') . "'><a class='page-link' href='?page=$i'>$i</a></li>";
-                        }
-                        ?>
-                    </ul>
-                </nav>
+               
                 <button onclick="printTable()" class="btn btn-secondary mt-2 mb-2 no-print">Print Table</button>
             </div>
         </div>
