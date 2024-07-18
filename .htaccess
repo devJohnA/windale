@@ -1,0 +1,11 @@
+# Allow access to index.php and other necessary files
+<Files "index.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+
+# Deny access to specific files or directories
+<FilesMatch "^(config|database|sensitive)\.php$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
