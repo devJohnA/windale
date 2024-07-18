@@ -16,7 +16,8 @@ try {
         $products = explode(', ', $productDetails);
         
         foreach ($products as $product) {
-            list($productName, $quantity) = explode(' ', $product, 2);
+            list($productName, $quantity) = explode(':', $product);
+    $quantity = intval($quantity);
             
             $updateStmt = $conn->prepare("UPDATE stocks SET productStock = productStock - ? WHERE productName = ?");
             $updateStmt->bind_param("is", $quantity, $productName);

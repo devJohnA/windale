@@ -77,7 +77,7 @@ $('#productSearch').on('input', function() {
                         <td>${product.productName}</td>
                         <td>&#8369;${parseFloat(product.productPrice).toFixed(2)}</td>
                         <td><input type="number" min="1" value="1" max="${product.productStock}" class="form-control quantity"></td>
-                        <td><button class="btn btn-primary add-to-cart">Add</button></td>
+                        <td><button class="btn btn-primary add-to-cart">Add to Cart</button></td>
                     </tr>`;
                     $('#productTable').append(row);
                 });
@@ -203,7 +203,7 @@ $('#btnPrint').on('click', function() {
                 quantity: parseInt(quantity),
                 price: itemPrice
             });
-            productDetailsString += `${product.trim()} ${quantity}, `;
+            productDetailsString += `${product.trim()}:${quantity}, `;
             totalPrice += itemPrice;
         }
     });
