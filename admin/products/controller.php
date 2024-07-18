@@ -149,64 +149,60 @@ switch ($action) {
  
 
 	function doEdit(){
-
-		if (@$_GET['stats']=='NotAvailable'){
-
+		if (@$_GET['stats'] == 'NotAvailable'){
 			$product = New Product();
-
-			$product->PROSTATS	= 'Available';
-
+			$product->PROSTATS = 'Available';
 			$product->update(@$_GET['id']);
-
-
-
-		}elseif(@$_GET['stats']=='Available'){
-
+		} elseif (@$_GET['stats'] == 'Available'){
 			$product = New Product();
-
-			$product->PROSTATS	= 'NotAvailable';
-
+			$product->PROSTATS = 'NotAvailable';
 			$product->update(@$_GET['id']);
-
-		}else{
-
-
-
-		if (isset($_GET['front'])){
-
-			$product = New Product();
-
-			$product->FRONTPAGE	= True;
-
-			$product->update(@$_GET['id']);
-
-
-
-		}
-
-	}
-
-	if(isset($_POST['save'])){
-		try {
-			$product = new Product();
-			$product->PRODESC = $_POST['PRODESC'];
-			$product->CATEGID = $_POST['CATEGORY'];
-			$product->PROQTY = $_POST['PROQTY'];
-			// $product->ORIGINALPRICE = $_POST['ORIGINALPRICE'];
-			$product->PROPRICE = $_POST['PROPRICE'];
-			
-			if($product->update($_POST['PROID'])) {
-				message("Product has been updated!", "success");
-			} else {
-				message("No changes were made to the product.", "info");
+		} else {
+			if (isset($_GET['front'])){
+				$product = New Product();
+				$product->FRONTPAGE = True;
+				$product->update(@$_GET['id']);
 			}
-		} catch (Exception $e) {
-			message("Error updating product: " . $e->getMessage(), "error");
 		}
-		redirect("index.php");
+	
+		if(isset($_POST['save'])){
+			try {
+				$product = new Product();
+				$product->PRODESC = $_POST['PRODESC'];
+				$product->CATEGID = $_POST['CATEGORY'];
+				$product->PROPRICE = $_POST['PROPRICE'];
+				$currentProduct = $product->single_product($_POST['PROID']); // Retrieve current product data
+	
+				if($product->update($_POST['PROID'])) {
+					$productName = $_POST['PRODESC'];
+					$stockAdjustment = $_POST['STOCK_ADJUSTMENT'];
+					$newQty = $currentProduct->PROQTY + $stockAdjustment;
+	
+					// Update stock
+					$mydb = new Database();
+					$updateStockQuery = "UPDATE stocks SET productStock = productStock - {$stockAdjustment} WHERE productName = '{$productName}'";
+					$mydb->setQuery($updateStockQuery);
+					$result = $mydb->executeQuery();
+	
+					if ($mydb->affected_rows() > 0) {
+						message("Product and stock updated successfully!", "success");
+					} else {
+						message("Product updated, but failed to update stock or no such product found!", "info");
+					}
+	
+					// Update the product quantity
+					$product->PROQTY = $newQty;
+					$product->update($_POST['PROID']);
+				} else {
+					message("No changes were made to the product.", "info");
+				}
+			} catch (Exception $e) {
+				message("Error updating product: " . $e->getMessage(), "error");
+			}
+			redirect("index.php");
+		}
 	}
-
-	}
+	
 
 
 
