@@ -222,7 +222,7 @@ $('#btnPrint').on('click', function() {
         success: function(response) {
             Swal.fire({
                 title: 'Order Placed!',
-                text: 'Your order has been placed successfully.',
+                text: 'Checkout successfully.',
                 icon: 'success',
                 confirmButtonText: 'OK'
             }).then((result) => {
