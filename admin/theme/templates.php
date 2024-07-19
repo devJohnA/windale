@@ -196,13 +196,6 @@ $notificationCount = $result->num_rows;
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link <?php echo isCurrentPage('/admin/sales/') ? 'active' : ''; ?>"
-                                href="<?php echo web_root; ?>admin/sales/index.php">
-                                <i class="fas fa-chart-line me-2"></i>
-                                <span class="nav-link-text">Sales</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link <?php echo isCurrentPage('/admin/products/') ? 'active' : ''; ?>"
                                 href="<?php echo web_root; ?>admin/products/index.php">
                                 <i class="fas fa-box me-2"></i>
@@ -243,6 +236,13 @@ $notificationCount = $result->num_rows;
                                 href="<?php echo web_root; ?>admin/settings/index.php">
                                 <i class="fas fa-cog me-2"></i>
                                 <span class="nav-link-text">Settings</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link <?php echo isCurrentPage('/admin/sales/') ? 'active' : ''; ?>"
+                                href="<?php echo web_root; ?>admin/sales/index.php">
+                                <i class="fas fa-chart-line me-2"></i>
+                                <span class="nav-link-text">Sales</span>
                             </a>
                         </li>
                         <li class="nav-item">
