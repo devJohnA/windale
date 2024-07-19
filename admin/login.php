@@ -140,6 +140,7 @@ if(isset($_POST['btnLogin'])){
     $user = new User();
 
     //make use of the static function, and we passed to parameters
+    // hey
 
     $res = $user::userAuthentication($email, $h_upass);
 
