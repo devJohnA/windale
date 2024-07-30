@@ -81,7 +81,7 @@ $result = mysqli_query($conn, $query);
                         </tbody>
                     </table>
                 </div>
-                <button onclick="printTable()" class="btn btn-secondary mt-2 mb-2 no-print">Print Table</button>
+                <button onclick="printTable()" class="btn btn-primary mt-2 mb-2 no-print">Print Sales Record</button>
             </div>
         </div>
     </div>
