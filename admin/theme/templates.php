@@ -246,11 +246,18 @@ $notificationCount = $result->num_rows;
                             </a>
                         </li>
                        
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link <?php echo isCurrentPage('/admin/report/') ? 'active' : ''; ?>"
                                 href="<?php echo web_root; ?>admin/report/index.php">
                                 <i class="fas fa-file-alt me-2"></i>
                                 <span class="nav-link-text">Reports</span>
+                            </a>
+                        </li> -->
+                        <li class="nav-item">
+                            <a class="nav-link <?php echo isCurrentPage('/admin/salesreport/') ? 'active' : ''; ?>"
+                                href="<?php echo web_root; ?>admin/salesreport/index.php">
+                                <i class="fas fa-file-alt me-2"></i>
+                                <span class="nav-link-text">Sales Report</span>
                             </a>
                         </li>
                         <?php } ?>
