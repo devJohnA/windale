@@ -1,5 +1,5 @@
 <style>
- @media print {
+    @media print {
         body * {
             visibility: hidden;
         }
@@ -12,13 +12,10 @@
             left: 0;
             top: 0;
             width: 100%;
-            padding-left: 6mm;
-            padding-right: 6mm;
-            box-sizing: border-box;
         }
-        @page {
-            size: auto;
-            margin: 0mm 6mm; /* This sets top/bottom margins to 0 and left/right to 6mm */
+        .custom-table {
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
         }
     }
 </style>

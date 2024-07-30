@@ -18,14 +18,28 @@ if (!empty($dateFrom) && !empty($dateTo)) {
     if ($result->num_rows > 0) {
         $overallTotalPrice = 0;
         echo '<style>
+        @media screen, print {
+            .custom-table {
+                width: 100%;
+                border-collapse: collapse;
+            }
             .custom-table thead th {
-                background-color: #033f63;
-                color: white;
+                background-color: #033f63 !important;
+                color: white !important;
+                padding: 10px;
             }
             .custom-table td {
-                border-bottom: 1px solid #033f63;
+                border-bottom: 1px solid #033f63 !important;
+                padding: 8px;
             }
-        </style>';
+            @media print {
+                .custom-table {
+                    -webkit-print-color-adjust: exact;
+                    print-color-adjust: exact;
+                }
+            }
+        }
+    </style>';
         echo '<table class="table custom-table">';
         echo '<thead><tr><th>OR Number</th><th>Product Details</th><th>Total Price</th><th>Order Date</th></tr></thead><tbody>';
 
