@@ -1,5 +1,9 @@
 <style>
     @media print {
+        @page {
+    size: auto;
+    margin: 5mm 5mm 0mm 5mm; 
+}
         body * {
             visibility: hidden;
         }
@@ -17,6 +21,19 @@
             -webkit-print-color-adjust: exact !important;
             print-color-adjust: exact !important;
         }
+
+        header, 
+    /* Hide footer */
+    footer,
+    /* Hide URL */
+    .url {
+        display: none !important;
+    }
+    /* Remove default headers and footers */
+    body::before,
+    body::after {
+        content: none !important;
+    }
     }
 </style>
 <h2 class="text-center mb-4">Sales Report</h2>
