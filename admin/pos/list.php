@@ -54,6 +54,17 @@ function generateORNumber() {
     return Math.floor(10000 + Math.random() * 90000);
 }
 
+function resetOrderDetails() {
+    $('#orderContainer').html('<p>No items in the cart.</p>');
+    $('#orderTotal').text('0.00');
+    orNumber = null;
+}
+
+function resetSearch() {
+    $('#productSearch').val('');
+    $('#productTable').empty();
+}
+
 $('#productSearch').on('input', function() {
     const query = $(this).val().trim();
     if (query === '') {
@@ -228,6 +239,8 @@ $('#btnPrint').on('click', function() {
             }).then((result) => {
                 if (result.isConfirmed) {
                     printReceipt();
+                    resetOrderDetails();
+                    resetSearch();
                 }
             });
         },
