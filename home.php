@@ -372,7 +372,7 @@
             <div class="col-sm-7" data-aos="fade-left" data-aos-delay="200">
                 <div class="quote-message">
                     <blockquote>
-                        <p style="text-align:justify;"> Welcome to Windale Hardware, your one-stop shop for all your home improvement needs. With years of experience in the industry, we pride ourselves on offering quality tools, hardwares, and expert advice to both professionals and DIY enthusiasts alike.</p>
+                        <p style="text-align:justify;"> Welcome to Windale Hardwares, your one-stop shop for all your home improvement needs. With years of experience in the industry, we pride ourselves on offering quality tools, hardwares, and expert advice to both professionals and DIY enthusiasts alike.</p>
                     </blockquote>
                     <em class="author">- Windale Hardware Team</em>
                 </div>
